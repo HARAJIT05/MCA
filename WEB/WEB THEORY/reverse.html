@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+        window.onload = function() {
+            const input = "Hello world!";
+            const reversed = reverseString(input);
+            document.getElementById("output").textContent = reversed;
+        };
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+body{
+    background-color: #33c6d0;
+}
+.form-title{
+    color: #0deaa0;
+    text-align: center;
+}
+
+#registration-form{
+    background-color: #91df00;
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+input, select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(95, 72, 187, 0.1);
+}
+input[type="submit"]{
+    background-color: #0deaa0;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    background-color: #0b9e7a;
+}

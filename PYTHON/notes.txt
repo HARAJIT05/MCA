@@ -1,0 +1,5 @@
+1.Nested List
+Ans:
+A nested list is a list within another list. For example:
+my_list = [1, 2, [3, 4], 5]
+Here, [3, 4] is a nested list inside my_list.
