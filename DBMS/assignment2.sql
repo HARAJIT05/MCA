@@ -7,8 +7,6 @@ CREATE TABLE `ass2`.`supplier_table` (
   `CITY` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`SID`));
 
-
-
 --Item Table
 CREATE TABLE `ass2`.`item_table` (
   `ITEM_ID` VARCHAR(45) NOT NULL,
@@ -23,7 +21,6 @@ CREATE TABLE `ass2`.`supply_table` (
   `ITEM_ID` VARCHAR(45) NOT NULL,
   `QUANTITY` INT NOT NULL,
   PRIMARY KEY (`SID`, `ITEM_ID`));
-
 
 --Supplier Table Data
   
@@ -66,7 +63,6 @@ INSERT INTO `ass2`.`supply_table` (`SID`, `ITEM_ID`, `QUANTITY`) VALUES ('S001',
 
 -- List the names of all suppliers
 SELECT `SNAME` FROM `ass2`.`supplier_table`;
-
 --Find all the items which are sold by at least one supplier.
 SELECT DISTINCT it.INAME FROM `ass2`.`supply_table` st JOIN `ass2`.`item_table` it ON st.ITEM_ID = it.ITEM_ID;
 
@@ -78,3 +74,13 @@ SELECT SID, SNAME FROM `ass2`.`supplier_table` WHERE CITY <> 'Kolkata';
 
 --Find all the suppliers who do not sell any item. 
 SELECT s.SNAME FROM `ass2`.`supplier_table` s LEFT JOIN `ass2`.`supply_table` sp ON s.SID = sp.SID WHERE sp.SID IS NULL;
+-- Find all the suppliers who sell at least one item. 
+SELECT DISTINCT s.SID, s.SNAME FROM `ass2`.`supplier_table` s JOIN `ass2`.`supply_table` sp ON s.SID = sp.SID;
+--Find all the suppliers who sell the item number ‘ITEM 1’.
+SELECT DISTINCT s.SID, s.SNAME FROM `ass2`.`supplier_table` s JOIN `ass2`.`supply_table` sp ON s.SID = sp.SID WHERE sp.ITEM_ID = 'ITEM1'; 
+--Find all the suppliers who sell either the item number ‘ITEM 1’ or ‘ITEM 2’.
+SELECT DISTINCT s.SID, s.SNAME FROM `ass2`.`supplier_table` s JOIN `ass2`.`supply_table` sp ON s.SID = sp.SID WHERE sp.ITEM_ID IN ('ITEM1', 'ITEM2');
+--Find all the suppliers who sell the item of color RED. 
+SELECT DISTINCT s.SID, s.SNAME FROM `ass2`.`supplier_table` s JOIN `ass2`.`supply_table` sp ON s.SID = sp.SID JOIN `ass2`.`item_table` it ON sp.ITEM_ID = it.ITEM_ID WHERE it.COLOR = 'Red';
+--Find all the suppliers who sell the item of color RED with quantity between 200 and 500.
+SELECT DISTINCT s.SID, s.SNAME FROM `ass2`.`supplier_table` s JOIN `ass2`.`supply_table` sp ON s.SID = sp.SID JOIN `ass2`.`item_table` it ON sp.ITEM_ID = it.ITEM_ID WHERE it.COLOR = 'Red' AND sp.QUANTITY BETWEEN 200 AND 500;
